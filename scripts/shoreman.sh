@@ -55,8 +55,7 @@ store_pid() {
 # This starts a command asynchronously and stores its pid in a list for use
 # later on in the script.
 start_command() {
-  # Force unbuffered output
-  script -q /dev/null bash -c "$1" 2>&1 | log "$2" "$3" &
+  bash -c "$1" 2>&1 | log "$2" "$3" &
   pid="$(jobs -p %%)"
   store_pid "$pid"
 }
